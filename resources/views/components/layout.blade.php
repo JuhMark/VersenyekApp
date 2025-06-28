@@ -17,11 +17,10 @@
           </div>
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-4">
-              <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-              <a href="/" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">Versenyek</a>
-              <a href="/fordulok" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Fordulók</a>
-              <a href="/versenyzok" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Versenyzők</a>
-              <a href="/felhasznalok" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Felhasználók</a>
+              <x-nav-link-desktop href="/" :active="request()->is('/')">Versenyek</x-nav-link-desktop>
+              <x-nav-link-desktop href="/fordulok" :active="request()->is('fordulok')">Fordulók</x-nav-link-desktop>
+              <x-nav-link-desktop href="/versenyzok" :active="request()->is('versenyzok')">Versenyzők</x-nav-link-desktop>
+              <x-nav-link-desktop href="/felhasznalok" :active="request()->is('felhasznalok')">Felhasználók</x-nav-link-desktop>
             </div>
           </div>
         </div>
@@ -46,11 +45,10 @@
     <!-- Mobile menu, show/hide based on menu state. -->
     <div class="md:hidden" id="mobile-menu">
       <div class="space-y-1 px-2 pt-2 pb-3 sm:px-3">
-        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-        <a href="/" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white" aria-current="page">Versenyek</a>
-        <a href="/fordulok" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Fordulók</a>
-        <a href="/versenyzok" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Versenyzők</a>
-        <a href="/felhasznalok" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Felhasználók</a>
+        <x-nav-link-mobile href="/" :active="request()->is('/')">Versenyek</x-nav-link-mobile>
+        <x-nav-link-mobile href="/fordulok" :active="request()->is('fordulok')">Fordulók</x-nav-link-mobile>
+        <x-nav-link-mobile href="/versenyzok" :active="request()->is('versenyzok')">Versenyzők</x-nav-link-mobile>
+        <x-nav-link-mobile href="/felhasznalok" :active="request()->is('felhasznalok')">Felhasználók</x-nav-link-mobile>
       </div>
     </div>
   </nav>
