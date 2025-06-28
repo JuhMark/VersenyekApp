@@ -3,7 +3,7 @@
 namespace App\Models;
 
 class Fordulo{
-    private $id;
+    private int $id;
     private int $roundNumber;
     private Verseny $competition;
 }
