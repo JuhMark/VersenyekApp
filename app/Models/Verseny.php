@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
-class Verseny{
-    private string $name;
-    private string $year;
-    private array $languages;
-    private int $pointsForCorrect;
-    private int $pointsForIncorrect;
-    private int $pointsForNone;
+use Illuminate\Database\Eloquent\Model;
+
+class Verseny extends Model{
+    protected $table = "versenyek";
+    protected $primary_key = ['name','year'];
+    public function fordulok(){
+        return Fordulo::all()->where('versenyName','=',$this->name)->where('versenyYear','=',$this->year);
+    }
 }

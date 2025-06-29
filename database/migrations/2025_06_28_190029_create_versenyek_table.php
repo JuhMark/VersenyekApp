@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('pointsForCorrect');
             $table->integer('pointsForIncorrect');
             $table->integer('pointsForEmpty');
-            $table->unique(['name','year']);
+            $table->primary(['name','year']);
         });
     }
 

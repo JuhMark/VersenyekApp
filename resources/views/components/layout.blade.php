@@ -18,8 +18,6 @@
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-4">
               <x-nav-link-desktop href="/" :active="request()->is('/')">Versenyek</x-nav-link-desktop>
-              <x-nav-link-desktop href="/fordulok" :active="request()->is('fordulok')">Fordulók</x-nav-link-desktop>
-              <x-nav-link-desktop href="/versenyzok" :active="request()->is('versenyzok')">Versenyzők</x-nav-link-desktop>
               <x-nav-link-desktop href="/felhasznalok" :active="request()->is('felhasznalok')">Felhasználók</x-nav-link-desktop>
             </div>
           </div>
@@ -46,8 +44,6 @@
     <div class="md:hidden" id="mobile-menu">
       <div class="space-y-1 px-2 pt-2 pb-3 sm:px-3">
         <x-nav-link-mobile href="/" :active="request()->is('/')">Versenyek</x-nav-link-mobile>
-        <x-nav-link-mobile href="/fordulok" :active="request()->is('fordulok')">Fordulók</x-nav-link-mobile>
-        <x-nav-link-mobile href="/versenyzok" :active="request()->is('versenyzok')">Versenyzők</x-nav-link-mobile>
         <x-nav-link-mobile href="/felhasznalok" :active="request()->is('felhasznalok')">Felhasználók</x-nav-link-mobile>
       </div>
     </div>

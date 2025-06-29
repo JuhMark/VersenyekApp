@@ -2,10 +2,8 @@
 
 namespace App\Models;
 
-class Felhasznalo{
-    private string $email;
-    private string $firstName;
-    private string $lastName;
-    private string $phone;
-    private string $address;
+use Illuminate\Database\Eloquent\Model;
+
+class Felhasznalo extends Model{
+    protected $table = "felhasznalok";
 }

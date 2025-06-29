@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
-class Fordulo{
-    private int $id;
-    private int $roundNumber;
-    private Verseny $competition;
+use Illuminate\Database\Eloquent\Model;
+
+class Fordulo extends Model{
+    protected $table = "fordulok";
+    public function versenyzok(){
+        return Versenyzo::all()->where('forduloId','=',$this->id);
+    }
 }

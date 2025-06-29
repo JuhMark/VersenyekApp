@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('versenyzok', function (Blueprint $table) {
             $table->string('felhasznaloEmail');
             $table->integer('forduloId');
-            $table->unique(['felhasznaloEmail','forduloId']);
+            $table->primary(['felhasznaloEmail','forduloId']);
             $table->foreign('felhasznaloEmail')
             ->references('email')
             ->on('felhasznalok')
