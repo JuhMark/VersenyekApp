@@ -9,11 +9,22 @@
         <li class="mb-1 mt-1">Pontok az üres válaszért: {{$verseny['pointsForEmpty']}}</li>
     </x-list>
     <h1 class=" text-2xl font-bold">Fordulók:</h1>
+    @if(!$verseny->fordulok()->isEmpty())
     <x-list>
         @foreach($verseny->fordulok() as $fordulo)
             <li class="mb-1 mt-1 transition delay-150 duration-300 ease-in-out hover:text-blue-700"><a href="\versenyzok\{{ $fordulo['id'] }}">{{ $fordulo['roundNumber'].". forduló" }}</a></li>
         @endforeach
     </x-list>
+    @endif
+    <div class="sm:col-span-4">
+    @if ($errors->any())
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li class="text-red-500">{{ $error }}</li>
+        @endforeach
+    </ul>
+    @endif
+  </div>
     <div>
     <form method="POST" action="/fordulok/{{$verseny['name']}}/{{$verseny['year']}}">
         @csrf
