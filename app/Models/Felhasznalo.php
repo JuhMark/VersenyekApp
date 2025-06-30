@@ -1,0 +1,14 @@
+<?php 
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Felhasznalo extends Model{
+    use HasFactory;
+    protected $table = "felhasznalok";
+    public $timestamps = false;
+    protected $fillable = ['email','firstName','lastName','phone','address'];
+    protected $primary_key = "email";
+}
