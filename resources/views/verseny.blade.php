@@ -14,6 +14,10 @@
             <li class="mb-1 mt-1 transition delay-150 duration-300 ease-in-out hover:text-blue-700"><a href="\versenyzok\{{ $fordulo['id'] }}">{{ $fordulo['roundNumber'].". forduló" }}</a></li>
         @endforeach
     </x-list>
-    <button id="add-fordulo" class="bg-gray-800 rounded-md px-2 pt-2 pb-3 sm:px-3 text-white font-bold flow-root">Új forduló felvétele</button>
-    <form id="fordulok-form" class="hidden"></form>
+    <div>
+    <form method="POST" action="/fordulok/{{$verseny['name']}}/{{$verseny['year']}}">
+        @csrf
+        <button type="submit" class="bg-gray-800 rounded-md px-2 pt-2 pb-3 sm:px-3 text-white font-bold flow-root">Új forduló hozzáadása</button>
+    </form>
+    </div>
 </x-layout>

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Versenyzo extends Model{
     protected $table = "versenyzok";
     public $timestamps = false;
+    protected $fillable = ['forduloId','felhasznaloEmail'];
     public function fordulo() {
         return $this->belongsTo(Fordulo::class,"forduloId","id");
     }

@@ -9,4 +9,5 @@ class Felhasznalo extends Model{
     use HasFactory;
     protected $table = "felhasznalok";
     public $timestamps = false;
+    protected $fillable = ['email','firstName','lastName','phone','address'];
 }
