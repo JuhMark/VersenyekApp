@@ -1,4 +1,3 @@
 username  | password    | role
 ----------|-------------|-----
 root      | versenyek   | root
-SiteAdmin | adminvagyok | DB Admin
