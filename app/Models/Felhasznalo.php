@@ -10,4 +10,5 @@ class Felhasznalo extends Model{
     protected $table = "felhasznalok";
     public $timestamps = false;
     protected $fillable = ['email','firstName','lastName','phone','address'];
+    protected $primary_key = "email";
 }

@@ -26,6 +26,6 @@
         @endforeach
     </ul>
     @endif
-  </div>
+    </div>
     @endif
 </x-layout>

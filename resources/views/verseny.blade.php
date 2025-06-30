@@ -31,4 +31,7 @@
         <button type="submit" class="bg-gray-800 rounded-md px-2 pt-2 pb-3 sm:px-3 text-white font-bold flow-root">Új forduló hozzáadása</button>
     </form>
     </div>
+    <div class="mt-2">
+    <a href="/fordulok/{{ $verseny['name'] }}/{{ $verseny['year'] }}/edit" class="bg-gray-800 rounded-md px-2 pt-2 pb-3 sm:px-3 text-white font-bold flow-root">Verseny szerkesztése</a>
+    </div>
 </x-layout>
