@@ -3,7 +3,18 @@
     <h1 class=" text-2xl font-bold">Versenyzők:</h1>
     <x-list>
         @foreach($fordulo->versenyzok() as $versenyzo)
-            <li class="mb-1 mt-1 transition delay-150 duration-300 ease-in-out hover:text-blue-700"><a href="/felhasznalok/{{ $versenyzo['felhasznaloEmail'] }}">{{ $versenyzo['felhasznaloEmail'] }}</a></li>
+            <li class="mb-1 mt-1 transition delay-150 duration-300 ease-in-out hover:text-blue-700">
+                <a href="/felhasznalok/{{ $versenyzo['felhasznaloEmail'] }}">{{ $versenyzo['felhasznaloEmail'] }}</a>
+                <div class="inline-flex justify-end">
+                <form method="POST" action="/versenyzok/{{ $versenyzo['forduloId'] }}" >
+                    @csrf
+                    @method('DELETE')
+                    <input type="hidden" value="{{ $versenyzo['forduloId'] }}" name="forduloId">
+                    <input type="hidden" value="{{ $versenyzo['felhasznaloEmail'] }}" name="felhasznaloEmail">
+                <button class="bg-gray-800 rounded-md px-2 pt-2 pb-3 sm:px-3 text-white font-bold">Törlés</button>
+            </form>
+            </div>
+            </li>
         @endforeach
     </x-list>
     @if(!$felhasznalok->isEmpty())

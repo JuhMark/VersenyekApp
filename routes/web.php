@@ -46,6 +46,18 @@ Route::post('/', function () {
     }
 });
 
+//Destroy Verseny
+Route::delete('/', function () {
+    $verseny = Verseny::where('name', request('name'))->where('year',request('year'))->first();
+    if($verseny) {
+        $verseny->where('name', request('name'))->where('year',request('year'))->delete();
+        return redirect('/');
+    } else {
+        throw ValidationException::withMessages(['none'=> 'Ilyen verseny nem létezik!']);
+    }
+});
+
+
 //Create Verseny
 Route::get('/versenyek/create', function () {
     return view('versenyek-create');
@@ -84,7 +96,18 @@ Route::patch('/fordulok/{name}/{year}', function ($name, $year) {
         ]);
         return redirect('/');
     } else {
-        throw ValidationException::withMessages(['dupl' => 'Ilyen verseny nem létezik!']);
+        throw ValidationException::withMessages(['none' => 'Ilyen verseny nem létezik!']);
+    }
+});
+
+//Destroy Fordulo
+Route::delete('/fordulok/{name}/{year}', function ($name, $year) {
+    $fordulo = Fordulo::where('id', request('id'))->first();
+    if($fordulo) {
+        $fordulo->where('id', request('id'))->delete();
+        return redirect('/fordulok/'.$name.'/'.$year);
+    } else {
+        throw ValidationException::withMessages(['none'=> 'Ilyen forduló nem létezik!']);
     }
 });
 
@@ -115,6 +138,17 @@ Route::get('/versenyzok/{id}', function ($id) {
     $emails = Versenyzo::where('forduloId', $id)->pluck('felhasznaloEmail')->toArray();
     $felhasznalok = Felhasznalo::all()->whereNotIn('email', $emails);
     return view('fordulo',['fordulo'=> $fordulo,'felhasznalok' => $felhasznalok]);
+});
+
+//Destroy Versenyzo
+Route::delete('/versenyzok/{id}', function ($id) {
+    $versenyzo = Versenyzo::where('forduloId',request('forduloId'))->where('felhasznaloEmail',request('felhasznaloEmail'))->first();
+    if($versenyzo) {
+        $versenyzo->where('forduloId',request('forduloId'))->where('felhasznaloEmail',request('felhasznaloEmail'))->delete();
+        return redirect('/versenyzok/'.$id);
+    } else {
+        throw ValidationException::withMessages(['none'=> 'Ilyen versenyző nem létezik!']);
+    }
 });
 
 //POST Versenyzo
@@ -201,7 +235,18 @@ Route::patch('/felhasznalok/{email}', function ($email) {
         ]);
         return redirect('/felhasznalok');
     } else {
-        throw ValidationException::withMessages(['dupl' => 'Ilyen email című felhasználó nem létezik!']);
+        throw ValidationException::withMessages(['none' => 'Ilyen email című felhasználó nem létezik!']);
+    }
+});
+
+//Destroy Felhasznalo
+Route::delete('/felhasznalok', function () {
+    $felhasznalo = Felhasznalo::where('email', request('email'))->first();
+    if($felhasznalo) {
+        $felhasznalo->where('email', request('email'))->delete();
+        return redirect('/felhasznalok');
+    } else {
+        throw ValidationException::withMessages(['none'=> 'Ilyen email című felhasználó nem létezik!']);
     }
 });
 

@@ -12,7 +12,17 @@
     @if(!$verseny->fordulok()->isEmpty())
     <x-list>
         @foreach($verseny->fordulok() as $fordulo)
-            <li class="mb-1 mt-1 transition delay-150 duration-300 ease-in-out hover:text-blue-700"><a href="\versenyzok\{{ $fordulo['id'] }}">{{ $fordulo['roundNumber'].". forduló" }}</a></li>
+            <li class="mb-1 mt-1 transition delay-150 duration-300 ease-in-out hover:text-blue-700">
+            <a href="\versenyzok\{{ $fordulo['id'] }}">{{ $fordulo['roundNumber'].". forduló" }}</a>
+            <div class="inline-flex justify-end">
+            <form method="POST" action="/fordulok/{{ $verseny['name'] }}/{{ $verseny['year'] }}" >
+                @csrf
+                @method('DELETE')
+                <input type="hidden" value="{{ $fordulo['id'] }}" name="id">
+                <button class="bg-gray-800 rounded-md px-2 pt-2 pb-3 sm:px-3 text-white font-bold">Törlés</button>
+            </form>
+            </div>
+            </li>
         @endforeach
     </x-list>
     @endif
